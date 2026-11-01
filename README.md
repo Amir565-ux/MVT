@@ -178,8 +178,9 @@ After each page load (`mvt/visitor.py`):
 
 ## 5. Project layout
 
+
 ```
-mass_visitor_tool/
+MVT/
 ├── main.py                    # entry point (--check / --install-browsers)
 ├── requirements.txt
 ├── README.md
@@ -193,13 +194,15 @@ mass_visitor_tool/
 │   ├── engine.py              # ThreadPoolExecutor orchestration
 │   ├── logbus.py              # thread-safe log plumbing
 │   ├── robots.py              # robots.txt compliance check
-│   ├── config.py              # JSON persistence (~/.mass_visitor_tool/config.json)
+│   ├──config.py              # JSON persistence (~/.mass_visitor_tool/config.json)
 │   ├── browser_setup.py       # automatic `playwright install` handling
 │   └── gui/
 │       ├── __init__.py
 │       └── main_window.py     # PyQt6 main window
-└── tests/
-    └── test_core.py           # offline self-tests (no browser required)
+└── dist/
+    └── main
+            ├── main.exe
+            └── _internal
 ```
 
 ### Module responsibilities
