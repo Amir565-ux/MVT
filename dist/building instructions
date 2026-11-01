@@ -1,0 +1,80 @@
+# Convert MVT Python Project into a Single EXE
+
+I want to package my MVT Python project into one standalone Windows executable named `MVT.exe`, without an `_internal` folder.
+
+## 1. Open CMD
+
+```cmd
+cd /d D:\minimax\mass_visitor_tool
+```
+
+## 2. Install dependencies
+
+```cmd
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pip install pyinstaller
+```
+
+## 3. Clean previous builds
+
+```cmd
+rmdir /s /q build
+rmdir /s /q dist
+del /q MVT.spec
+```
+
+## 4. Build the EXE
+
+```cmd
+python -m PyInstaller --onefile --windowed --name MVT --clean --noconfirm main.py
+```
+
+## 5. Check output
+
+```cmd
+dir dist
+```
+
+Expected output:
+
+```text
+MVT/
+└── dist/
+    └── MVT.exe
+```
+
+## 6. Test the EXE
+
+```cmd
+dist\MVT.exe
+```
+
+## Important Requirements
+
+- The EXE must include all required Python modules.
+- Preserve PyQt6 GUI functionality.
+- Ensure Playwright integration works.
+- Handle Playwright browser binaries separately if necessary.
+- Preserve configuration and logging functionality.
+- Fix missing DLL and module errors.
+- Do not delete or modify the original Python source code.
+- Test the EXE on a Windows computer without Python installed.
+
+## 7. If the EXE fails
+
+Run:
+
+```cmd
+python -m PyInstaller --onefile --console --name MVT_Debug --clean --noconfirm main.py
+```
+
+Then run:
+
+```cmd
+dist\MVT_Debug.exe
+```
+
+Use the error messages to identify missing dependencies and fix the build configuration.
+
+**Final goal:** A working single-file `MVT.exe` that users can run without installing Python or Python packages.
