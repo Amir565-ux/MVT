@@ -1,0 +1,14 @@
+# Mass Website Visitor - dependencies
+#
+#   pip install -r requirements.txt
+#   python -m playwright install chromium firefox
+#
+# The browser binaries are downloaded separately by the Playwright installer.
+
+PyQt6>=6.5.0
+playwright>=1.40.0
+requests>=2.31.0
+
+# Optional but recommended: enables the health check for socks4:// and socks5://
+# proxies (the requests library needs PySocks to speak SOCKS).
+PySocks>=1.7.1
